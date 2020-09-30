@@ -1,9 +1,12 @@
 function solve() {
  
-  let textElement = document.getElementById("input");
-  let array = textElement.split("."); 
-
-  for (let i = 0; i < array.length; i++){
+  let button = document.getElementsByTagName("p")[0]; 
+  button.forEach(element => {
+    element.split("."); 
     
-  }
+  });
+  console.log(button);
+  // for (let i = 0; i < array.length; i++){
+    
+  // }
 }
