@@ -1,18 +1,25 @@
 function solve() {
 
-  let buttons = document.getElementsByClassName("link-1"); 
-  buttons.forEach(x => {
-    x.addEventListener("click", function(e){
-      let value = e.target.value;
-      
-    });
-  }); 
-  let paragraphsElements = document.getElementsByTagName("p"); 
-  let [visited, number, times] = paragraphsElements.split(" ");
-  number = Number(number); 
+  let a = Array.from(document.querySelectorAll("a"));
+  let counters = a.map(el => el.nextElementSibling.innerText.split(" ")[1]);
+  // let counters = new Array(a.length).fill(0);
+  let container = document.querySelector("#page1 >.middled");
+  container.addEventListener("click", function (e) {
+    let target = e.target;
+    let parent = e.target.parentElement;
+    let notTargetA = target.localName !== "a";
+    let notTargetParentA = parent && parent.localName !== "a";
+    if (notTargetA && notTargetParentA) {
+      return;
+    }
+    let targetA = notTargetA ? parent : target;
+    let counterIndex = a.indexOf(targetA);
+    if (counterIndex === -1) {
+      return;
+    }
+    counters[counterIndex]++;
 
-  buttons.addEventListener("click", function(e){
-    let value = Number(number.value); 
-    number.value = ++ value; 
+    let paragraph = targetA.nextElementSibling;
+    paragraph.innerText = `visited ${counters[counterIndex]} times`;
   });
 }
