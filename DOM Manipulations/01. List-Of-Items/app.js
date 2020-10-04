@@ -8,4 +8,4 @@ function addItem() {
 
     ulElement.appendChild(liElement);
     inputElement.value = "";
-}
+}  
